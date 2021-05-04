@@ -18,6 +18,12 @@ public class CountryController {
 	@Autowired
 	private CountryService countryService;
 
+	@RequestMapping("/countryByName")
+	public Country findCountryByName(@RequestParam("countryName") String countryName) {
+		Country country = countryService.findCountryByName(countryName);
+		return country;
+	}
+
 	@RequestMapping("/find-country")
 	public List<Country> findCountriesByNameAndContinent(@RequestParam("continent") String continent,
 			@RequestParam("countryName") String countryName) {

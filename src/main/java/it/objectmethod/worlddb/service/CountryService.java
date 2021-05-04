@@ -13,6 +13,12 @@ public class CountryService {
 	@Autowired
 	private CountryRepository countryRepo;
 
+	public Country findCountryByName(String name) {
+		Country country = countryRepo.findByName(name);
+//		List<City> cities = country.getCities();
+		return country;
+	}
+
 	public List<Country> findCountriesByContinent(String continent) {
 		List<Country> countryList = null;
 		countryList = countryRepo.findCountriesByContinent("%" + continent + "%");

@@ -16,7 +16,7 @@ public class CityService {
 
 	public List<City> findCityByCountryCode(String countryCode) {
 		List<City> cityList = null;
-		cityList = cityRepo.findCitiesByCountryCode(countryCode);
+		cityList = cityRepo.findByCountryCode(countryCode);
 		return cityList;
 	}
 
@@ -28,7 +28,7 @@ public class CityService {
 
 	public List<City> findByCountryCode(String codN) {
 		List<City> cityList = null;
-		cityList = cityRepo.findCitiesByCountryCode(codN);
+		cityList = cityRepo.findByCountryCode(codN);
 		return cityList;
 	}
 

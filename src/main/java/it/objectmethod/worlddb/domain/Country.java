@@ -1,8 +1,14 @@
 package it.objectmethod.worlddb.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +29,10 @@ public class Country {
 
 	@Column(name = "Population")
 	private Integer population;
+
+	@JoinColumn(name = "country_code", referencedColumnName = "Code")
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<City> cities;
 
 	public String getCode() {
 		return code;
@@ -62,5 +72,13 @@ public class Country {
 
 	public void setPopulation(Integer population) {
 		this.population = population;
+	}
+
+	public List<City> getCities() {
+		return cities;
+	}
+
+	public void setCities(List<City> cities) {
+		this.cities = cities;
 	}
 }
